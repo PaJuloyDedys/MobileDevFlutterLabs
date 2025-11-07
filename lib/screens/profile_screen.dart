@@ -1,61 +1,40 @@
 import 'package:flutter/material.dart';
-import '../widgets/app_scaffold.dart';
-import '../widgets/app_text_field.dart';
-import '../widgets/primary_button.dart';
-import '../services.dart' as di;
+import 'package:lab_2/widgets/app_scaffold.dart';
+import 'package:lab_2/widgets/app_text_field.dart';
+import 'package:lab_2/widgets/primary_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
   @override
-  State<ProfileScreen> createState() => _S();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _S extends State<ProfileScreen> {
-  final name = TextEditingController();
-  final bio = TextEditingController();
-  String email = '';
+class _ProfileScreenState extends State<ProfileScreen> {
+  final name = TextEditingController(text: 'User Name');
+  final bio = TextEditingController(text: 'Movie enjoyer');
 
   @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  Future<void> _load() async {
-    final u = await di.auth.current();
-    if (u == null) return;
-    setState(() {
-      email = u.email;
-      name.text = u.name;
-      bio.text = u.bio ?? '';
-    });
-  }
-
-  Future<void> _save() async {
-    final u = await di.auth.current();
-    if (u == null) return;
-    final nu = u.copyWith(name: name.text.trim(), bio: bio.text.trim());
-    await di.auth.update(nu);
-    if (mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Saved')));
-    }
+  void dispose() {
+    name.dispose();
+    bio.dispose();
+    super.dispose();
   }
 
   @override
-  Widget build(BuildContext c) {
+  Widget build(BuildContext context) {
     return AppScaffold(
       title: 'Profile',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(email, textAlign: TextAlign.center),
-          const SizedBox(height: 12),
+          const CircleAvatar(radius: 36, child: Icon(Icons.person, size: 36)),
+          const SizedBox(height: 16),
           AppTextField(controller: name, label: 'Display name'),
           const SizedBox(height: 12),
           AppTextField(controller: bio, label: 'Bio'),
           const SizedBox(height: 16),
-          PrimaryButton(onPressed: _save, text: 'Save'),
+          PrimaryButton(onPressed: () {}, text: 'Save'),
         ],
       ),
     );
