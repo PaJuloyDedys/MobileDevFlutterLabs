@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.lab_1"
+    namespace = "com.example.lab_2"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,18 +20,15 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.lab_1"
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.lab_2"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-
-        ndk {
-            // збираємо тільки для емулятора (x86_64)
-            abiFilters += "x86_64"
-        }
     }
-
 
     buildTypes {
         release {
