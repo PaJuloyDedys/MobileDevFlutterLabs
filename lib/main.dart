@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:lab_1/screens/home_screen.dart';
-import 'package:lab_1/styles/styles.dart';
+import 'router.dart';
+import 'styles/styles.dart';
 
-void main() {
-  runApp(const App());
-}
+void main() => runApp(const MovieWatchlistApp());
 
-class App extends StatelessWidget {
-  const App({super.key});
+class MovieWatchlistApp extends StatelessWidget {
+  const MovieWatchlistApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lab 1 Flutter',
+      title: 'Movie Watchlist',
       theme: appTheme,
-      home: const HomeScreen(),
+      onGenerateRoute: AppRoutes.onGenerate,
+      initialRoute: AppRoutes.login, // або AppRoutes.home, як вирішиш
+      debugShowCheckedModeBanner: false,
     );
   }
 }
