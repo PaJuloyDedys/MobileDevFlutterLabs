@@ -1,35 +1,58 @@
 import 'package:flutter/material.dart';
 
+/// Глобальні відступи/ширина для сторінок
+const EdgeInsets pagePadding = EdgeInsets.all(16);
+const double pageMaxWidth = 920;
+
 final appTheme = ThemeData(
-  colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4F46E5)),
   useMaterial3: true,
-  scaffoldBackgroundColor: const Color(0xFFF6F7FB),
-  textTheme: const TextTheme(
-    bodyMedium: TextStyle(fontFamily: 'Roboto', fontSize: 16),
+  colorSchemeSeed: Colors.indigo,
+  scaffoldBackgroundColor: const Color(0xFFF6F6FA),
+
+  textTheme: const TextTheme(),
+
+  cardTheme: const CardThemeData(
+    elevation: 0,
+    margin: EdgeInsets.zero,
+    color: Colors.white,
+    surfaceTintColor: Colors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
   ),
-);
 
-const pagePadding = EdgeInsets.all(20);
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: Colors.white,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(color: Color(0xFFE2E2EE)),
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+  ),
 
-const counterTextStyle = TextStyle(
-  fontSize: 28,
-  fontWeight: FontWeight.w700,
-  color: Color(0xFF3730A3),
-);
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+    ),
+  ),
 
-const messageTextStyle = TextStyle(fontSize: 16, color: Colors.black87);
+  filledButtonTheme: FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+    ),
+  ),
 
-final inputDecoration = InputDecoration(
-  labelText: 'Введи число або "Avada Kedavra"',
-  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-  filled: true,
-  fillColor: Colors.white,
-);
-
-const inputTextStyle = TextStyle(fontSize: 16);
-
-final buttonStyle = FilledButton.styleFrom(
-  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-  textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.transparent,
+    surfaceTintColor: Colors.transparent,
+    scrolledUnderElevation: 0,
+    elevation: 0,
+    centerTitle: false,
+  ),
 );
